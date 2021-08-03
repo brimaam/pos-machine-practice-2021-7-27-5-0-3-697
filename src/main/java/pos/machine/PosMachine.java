@@ -67,4 +67,13 @@ public class PosMachine {
     public String addTotalPrice(String allItemsDetails, Double totalPrice){
         return allItemsDetails + "Total Price: " + totalPrice;
     }
+
+    public String generateReceipt(Receipt receipt){
+        String allItemsDetails = combineItemDetails(receipt);
+        double totalPrice = receipt.getTotalPrice();
+
+        String generatedReceipt = addTotalPrice(allItemsDetails,totalPrice);
+
+        return generatedReceipt;
+    }
 }

@@ -7,7 +7,7 @@
 | computeReceipt   | 1mins30       | 1min23s     |       | I should keep the good time    |
 | combineItemDetails  | 1mins       | 1min32s       | I estimated my time limit too low       | I need to keep going faster or adjust my time limit       |
 | addTotalPrice  | 2mins       | 1min12s      |        | I should maintain improvements       |
-| generateReceipt   | temp       | temp       | temp       | temp       |
+| generateReceipt   | 2mins       | 2mins14s       |        | I should keep improvements and still familiarize myself with Lists       |
 | printReceipt   | temp       | temp       | temp       | temp       |
 
 ACTIONS: 
