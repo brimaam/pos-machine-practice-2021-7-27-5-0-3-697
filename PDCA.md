@@ -3,7 +3,7 @@
 | getAllItemsInfo  | 5mins   | 2min23s  | I kept the implementation simple. | I should continue to keep the implementation simple and adjust time limit. |
 | convertToItems  | 3mins       | 6mins       | Took time to much time to re-familiarize with Lists     | I need to get more knowledge on java Lists.  |
 | computeSubtotal   | 3mins       | 2mins30       | took a simple approach   | I need to keep trying to use simple solutions       |
-| computeTotalPrice   | temp       | temp       | temp       | temp       |
+| computeTotalPrice   | 2mins       | 1mins43       |     | I should keep improving time    |
 | computeReceipt   | temp       | temp       | temp       | temp       |
 | combineItemDetails  | temp       | temp       | temp       | temp       |
 | addTotalPrice  | temp       | temp       | temp       | temp       |

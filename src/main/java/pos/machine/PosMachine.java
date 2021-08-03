@@ -32,11 +32,19 @@ public class PosMachine {
         return itemPurchased;
     }
 
-
-    public List<Item> computeSubtotal(List<Item> itemPurchased){
-        for(Item item : itemPurchased) {
+    public List<Item> computeSubtotal(List<Item> itemsPurchased){
+        for(Item item : itemsPurchased) {
             item.setSubTotal((item.getQuantity() * item.getUnitPrice()));
         }
-        return itemPurchased;
+        return itemsPurchased;
+    }
+
+    public Receipt computeTotalPrice(List<Item> itemsWithSubtotal){
+        Receipt receipt = new Receipt();
+        for(Item item : itemsWithSubtotal) {
+            receipt.setTotalPrice(item.getSubTotal());
+            receipt.setItemDetails(itemsWithSubtotal);
+        }
+        return receipt;
     }
 }
