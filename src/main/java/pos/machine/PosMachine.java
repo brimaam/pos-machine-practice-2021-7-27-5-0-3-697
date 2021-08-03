@@ -47,4 +47,11 @@ public class PosMachine {
         }
         return receipt;
     }
+
+    public Receipt computeReceipt(List<Item> itemsPurchased){
+        List<Item> itemsWithSubtotal = computeSubtotal(itemsPurchased);
+        Receipt receipt = computeTotalPrice(itemsWithSubtotal);
+
+        return receipt;
+    }
 }
