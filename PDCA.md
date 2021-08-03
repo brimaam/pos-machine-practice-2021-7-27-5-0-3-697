@@ -1,6 +1,6 @@
 |     | P |  D |  C |  A |  
 | ----------- | ----------- | ----------- | ----------- | ----------- |
-| getAllItemsInfo  | temp   | temp  | temp | temp   |
+| getAllItemsInfo  | 5mins   | 2min23s  | I kept the implementation simple. | I should continue to keep the implementation simple and adjust time limit. |
 | convertToItems  | temp       | temp       | temp       | temp       |
 | computeSubtotal   | temp       | temp       | temp       | temp       |
 | computeTotalPrice   | temp       | temp       | temp       | temp       |
