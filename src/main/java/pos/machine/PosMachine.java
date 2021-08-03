@@ -63,4 +63,8 @@ public class PosMachine {
 
         return allItemDetails;
     }
+
+    public String addTotalPrice(String allItemsDetails, Double totalPrice){
+        return allItemsDetails + "Total Price: " + totalPrice;
+    }
 }
