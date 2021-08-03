@@ -54,4 +54,13 @@ public class PosMachine {
 
         return receipt;
     }
+
+    public String combineItemDetails(Receipt receipt){
+        String allItemDetails = "";
+        for( Item item: receipt.getItemDetails()) {
+           allItemDetails = "Name: " + item.getName() + " Quantity: " + item.getQuantity() + " Unit price: " + item.getUnitPrice() + "Subtotal: " + item.getSubTotal();
+        }
+
+        return allItemDetails;
+    }
 }
