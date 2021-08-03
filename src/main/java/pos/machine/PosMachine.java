@@ -19,7 +19,7 @@ public class PosMachine {
 
     public List<Item> convertToItems(List<String> barcodesList){
         List<ItemInfo> itemsInfo = getAllItemsInfo();
-        List<Item> itemPurchased = new ArrayList<>();
+        List<Item> itemPurchased = new ArrayList<Item>();
 
         for(ItemInfo item : itemsInfo) {
             for (String barcode : barcodesList) {
@@ -29,7 +29,14 @@ public class PosMachine {
                 }
             }
         }
+        return itemPurchased;
+    }
 
+
+    public List<Item> computeSubtotal(List<Item> itemPurchased){
+        for(Item item : itemPurchased) {
+            item.setSubTotal((item.getQuantity() * item.getUnitPrice()));
+        }
         return itemPurchased;
     }
 }
