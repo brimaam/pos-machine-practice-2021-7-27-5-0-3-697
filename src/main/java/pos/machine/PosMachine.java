@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PosMachine {
-    public static void main(String[] args) {
 
-    }
     public String printReceipt(List<String> barcodes) {
-        return null;
+        List<Item> itemsPurchased = convertToItems(barcodes);
+        Receipt receipt = computeReceipt(itemsPurchased);
+        String finalReceipt = generateReceipt(receipt);
+
+        return finalReceipt;
     }
 
     public List<ItemInfo> getAllItemsInfo(){

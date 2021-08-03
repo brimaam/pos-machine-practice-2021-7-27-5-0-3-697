@@ -8,6 +8,6 @@
 | combineItemDetails  | 1mins       | 1min32s       | I estimated my time limit too low       | I need to keep going faster or adjust my time limit       |
 | addTotalPrice  | 2mins       | 1min12s      |        | I should maintain improvements       |
 | generateReceipt   | 2mins       | 2mins14s       |        | I should keep improvements and still familiarize myself with Lists       |
-| printReceipt   | temp       | temp       | temp       | temp       |
+| printReceipt   | 2mins       | 1min55s       |      | I should keep improvements and still familiarize myself with Lists       |
 
-ACTIONS: 
+ACTIONS: I need to get know Lists more to realize improvements and to confirm any mistakes in coding.
