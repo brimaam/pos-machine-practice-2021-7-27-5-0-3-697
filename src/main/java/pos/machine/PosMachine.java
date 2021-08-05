@@ -10,80 +10,79 @@ public class PosMachine {
     public String printReceipt(List<String> barcodes) {
         List<Item> itemsPurchased = convertToItems(barcodes);
         Receipt receipt = computeReceipt(itemsPurchased);
-        String finalReceipt = generateReceipt(receipt);
 
-        return finalReceipt;
+        return generateReceipt(receipt);
     }
 
-    public List<ItemInfo> getAllItemsInfo(){
-        List<ItemInfo> itemsInfo = ItemDataLoader.loadAllItemInfos();
+    public List<ItemInfo> getAllItemsInfo() {
 
-        return itemsInfo;
+        return ItemDataLoader.loadAllItemInfos();
     }
 
-    public List<Item> convertToItems(List<String> barcodesList){
-        List<ItemInfo> itemsInfo = getAllItemsInfo();
-        List<Item> itemsPurchased = new ArrayList<>();
-
-        for(ItemInfo item : itemsInfo) {
-            for (String barcode : barcodesList.stream().distinct().collect(Collectors.toList())) {
-                if (item.getBarcode().equals(barcode)) {
-                    Item it = new Item(item.getName(),item.getPrice(), Collections.frequency(barcodesList, barcode));
-                    itemsPurchased.add(it);
-                }
+    public Item convertToItem(ItemInfo item, List<String> barcodes) {
+        Item it = new Item();
+        for (String barcode : barcodes) {
+            if (item.getBarcode().equals(barcode)) {
+                it = new Item(item.getName(), item.getPrice(), Collections.frequency(barcodes, barcode));
             }
         }
+        return it;
+    }
+
+    public List<Item> convertToItems(List<String> barcodesList) {
+        List<ItemInfo> itemsInfo = getAllItemsInfo();
+        List<Item> itemsPurchased = new ArrayList<>();
+        for (ItemInfo item : itemsInfo) {
+            itemsPurchased.add(convertToItem(item, barcodesList));
+        }
+
         return itemsPurchased;
     }
 
-    public List<Item> computeSubtotal(List<Item> itemsPurchased){
-        for(Item item : itemsPurchased) {
+    public List<Item> computeSubtotal(List<Item> itemsPurchased) {
+        for (Item item : itemsPurchased) {
             item.setSubTotal((item.getQuantity() * item.getUnitPrice()));
         }
         return itemsPurchased;
     }
 
-    public Receipt computeTotalPrice(List<Item> itemsWithSubtotal){
-        int totalPrice =0;
-        for(Item item : itemsWithSubtotal) {
+    public Receipt computeTotalPrice(List<Item> itemsWithSubtotal) {
+        int totalPrice = 0;
+        for (Item item : itemsWithSubtotal) {
             totalPrice = totalPrice + item.getSubTotal();
         }
-        Receipt receipt = new Receipt(itemsWithSubtotal, totalPrice);
 
-        return receipt;
+        return new Receipt(itemsWithSubtotal, totalPrice);
     }
 
-    public Receipt computeReceipt(List<Item> itemsPurchased){
+    public Receipt computeReceipt(List<Item> itemsPurchased) {
         List<Item> itemsWithSubtotal = computeSubtotal(itemsPurchased);
-        Receipt receipt = computeTotalPrice(itemsWithSubtotal);
 
-        return receipt;
+        return computeTotalPrice(itemsWithSubtotal);
     }
 
-    public String combineItemDetails(Receipt receipt){
+    public String combineItemDetails(Receipt receipt) {
         String allItemDetails = "";
-        for( Item item: receipt.getItemDetails()) {
-           allItemDetails =  allItemDetails + "Name: " + item.getName() + ", Quantity: "
-                   + item.getQuantity() + ", Unit price: " + item.getUnitPrice()
-                   + " (yuan), Subtotal: " + item.getSubTotal() + " (yuan)\n";
+        for (Item item : receipt.getItemDetails()) {
+            allItemDetails = allItemDetails + "Name: " + item.getName() + ", Quantity: "
+                    + item.getQuantity() + ", Unit price: " + item.getUnitPrice()
+                    + " (yuan), Subtotal: " + item.getSubTotal() + " (yuan)\n";
         }
 
         return "***<store earning no money>Receipt***\n" + allItemDetails;
     }
 
-    public String addTotalPrice(String allItemsDetails, Double totalPrice){
+    public String addTotalPrice(String allItemsDetails, Double totalPrice) {
         return allItemsDetails +
                 "----------------------\n"
                 + "Total: " + totalPrice.intValue() + " (yuan)\n"
                 + "**********************";
     }
 
-    public String generateReceipt(Receipt receipt){
+    public String generateReceipt(Receipt receipt) {
         String allItemsDetails = combineItemDetails(receipt);
         double totalPrice = receipt.getTotalPrice();
 
-        String generatedReceipt = addTotalPrice(allItemsDetails,totalPrice);
-
-        return generatedReceipt;
+        return addTotalPrice(allItemsDetails, totalPrice);
     }
 }
